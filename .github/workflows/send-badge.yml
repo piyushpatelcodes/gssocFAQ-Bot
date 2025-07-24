@@ -27,19 +27,17 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            const prNumber = inputs.pr_number || context.issue.number;
-            const username = inputs.username || context.payload.pull_request?.user?.login || "test-user";
+            const prNumber = github.event.inputs?.pr_number || context.issue.number;
+            const username = github.event.inputs?.username || context.payload.pull_request?.user?.login || "test-user";
 
             if (!prNumber) {
               console.log("No PR number provided. Skipping.");
               return;
             }
 
-            // 🎖 Main Pro Contributor Badge
             const mainBadgeId = '1-B3va3balHY7upoN3nhNEnj1xFhzbcsr';
             const mainBadgeUrl = `https://drive.google.com/uc?export=view&id=${mainBadgeId}`;
 
-            // 🎯 Badge list with rarities
             const badgePool = [
               { id: '1nheki_edqi1fguGmKeDe2xVhd41CAcoH', rarity: 'common' },
               { id: '1_kj94AZb6NkCso1ljA3vWF5HoTumwBhx', rarity: 'common' },
@@ -56,8 +54,7 @@ jobs:
             const weights = {
               common: 5,
               rare: 2,
-              epic: 1,
-              legendary: 0.5
+              epic: 1
             };
 
             function weightedRandomSet(pool, count) {
@@ -72,7 +69,6 @@ jobs:
 
             const selectedBadges = weightedRandomSet(badgePool, 3);
 
-            // 🔧 HTML Output
             let badgeHtml = `<div style="display: flex; justify-content: center; margin-bottom: 20px;">
               <img src="${mainBadgeUrl}" width="250" height="250" alt="Pro Contributor Badge" />
             </div>
