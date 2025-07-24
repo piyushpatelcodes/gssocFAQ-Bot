@@ -17,6 +17,7 @@ permissions:
   pull-requests: write
   contents: read
 
+
 jobs:
   reward-contributor:
     if: github.event.pull_request.merged == true || github.event_name == 'workflow_dispatch'
@@ -27,19 +28,12 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            const prNumber = inputs.pr_number || context.issue.number;
-            const username = inputs.username || context.payload.pull_request?.user?.login || "test-user";
+            const username = context.payload.pull_request?.user?.login || "test-user";
+            const issue_number = context.issue.number || 1;
 
-            if (!prNumber) {
-              console.log("No PR number provided. Skipping.");
-              return;
-            }
-
-            // 🎖 Main Pro Contributor Badge
             const mainBadgeId = '1-B3va3balHY7upoN3nhNEnj1xFhzbcsr';
             const mainBadgeUrl = `https://drive.google.com/uc?export=view&id=${mainBadgeId}`;
 
-            // 🎯 Badge list with rarities
             const badgePool = [
               { id: '1nheki_edqi1fguGmKeDe2xVhd41CAcoH', rarity: 'common' },
               { id: '1_kj94AZb6NkCso1ljA3vWF5HoTumwBhx', rarity: 'common' },
@@ -57,7 +51,6 @@ jobs:
               common: 5,
               rare: 2,
               epic: 1,
-              legendary: 0.5
             };
 
             function weightedRandomSet(pool, count) {
@@ -71,27 +64,27 @@ jobs:
             }
 
             const selectedBadges = weightedRandomSet(badgePool, 3);
+            const selectedIds = selectedBadges.map(b => b.id);
 
-            // 🔧 HTML Output
-            let badgeHtml = `<div style="display: flex; justify-content: center; margin-bottom: 20px;">
-              <img src="${mainBadgeUrl}" width="250" height="250" alt="Pro Contributor Badge" />
-            </div>
-            <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">`;
-
-            selectedBadges.forEach(badge => {
+            let badgeHtml = `<div style="display: flex; gap: 10px; flex-wrap: wrap;">`;
+            badgePool.forEach(badge => {
               const url = `https://drive.google.com/uc?export=view&id=${badge.id}`;
-              badgeHtml += `<img src="${url}" width="200" height="200" style="border-radius: 10px;" alt="Unlocked DEV SLAYER Badge" />`;
+              if (selectedIds.includes(badge.id)) {
+                badgeHtml += `<img src="${url}" width="200" height="200" style="border-radius: 10px;" alt="Unlocked Badge" />`;
+              } else {
+                badgeHtml += `<img src="${url}" width="60" height="60" style="opacity: 0.2; filter: grayscale(100%);" alt="Locked Badge" title="Locked — keep contributing to unlock!" />`;
+              }
             });
-
             badgeHtml += `</div>`;
 
             const message =
               "🎉 <strong>Thanks @" + username + " for contributing to the <em>GSSOC FAQ Discord Bot</em>!</strong><br>" +
-              "You've earned the <strong>Pro Contributor</strong> badge and unlocked <strong>3 DEV SLAYER</strong> achievements! ⚔️<br><br>" +
-              badgeHtml;
+              "You've earned the <strong>Pro Contributor</strong> badge and unlocked <strong>3 DEV SLAYER</strong> Achievements!<br><br>" +
+              badgeHtml +
+              "<p style=\"font-size: 14px; color: #555;\">🔒 Some badges are still locked. Keep contributing PRs to unlock more rare and legendary achievements!</p>";
 
-            await github.rest.issues.createComment({
-              issue_number: prNumber,
+            github.rest.issues.createComment({
+              issue_number,
               owner: context.repo.owner,
               repo: context.repo.repo,
               body: message
