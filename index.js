@@ -26,10 +26,10 @@ let lastFunQuoteIndex = -1;
 require("dotenv").config();
 
 const faqs = require("./faqs.json");
-const { sendPaginatedProjects } = require("./chunkMessgae");
+const { sendPaginatedProjects } = require("./chunkMessage");
 
-const phase1Projects = JSON.parse(fs.readFileSync("./projects-phase1.json"));
-const phase2Projects = JSON.parse(fs.readFileSync("./projects-phase2.json"));
+const phase1Projects = JSON.parse(fs.readFileSync("./projects-phase1.json", "utf8"));
+const phase2Projects = JSON.parse(fs.readFileSync("./projects-phase2.json", "utf8"));
 let usedIndexes = []; // To track shown quotes
 
 const client = new Client({
@@ -243,7 +243,7 @@ client.on(Events.InteractionCreate, async (interaction) => {
           return;
         }
 
-        console.time("mlreq"); // ✅ Start timer for ML request
+        
 
         try {
           console.time("mlreq"); 
@@ -399,7 +399,7 @@ Mentors:
           }
         }
         embed.addFields(...mentorFields);
-        embed.setColor("Random");
+        embed.setColor(0x00AE86);
 
         await interaction.reply({ embeds: [embed] });
       }
@@ -534,8 +534,8 @@ app.use("/docs", express.static(path.join(__dirname, "views")));
 app.use("/docs", documentationRoute);
 
 
-app.listen(3000, () => {
-  console.log(`🚀 Running at http://localhost:3000/docs`);
+app.listen(PORT, () => {
+  console.log(`🚀 Running at http://localhost:${PORT}/docs`);
 });
 
 
