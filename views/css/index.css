@@ -20,6 +20,8 @@
 
     --faq-h-text: #0e0e0e;
     --faq-content-text: #1e1e1e;
+    --faq-content-bg: #ffffff;
+    --faq-content-shadow: 0px 4px 6px rgba(0,0,0,0.1);
 
     --hr-color: #e5e7eb;
 
@@ -50,6 +52,8 @@
 
     --faq-h-text: #efefef;
     --faq-content-text: #d4d4d4;
+    --faq-content-bg: #1e1e1e;
+    --faq-content-shadow: 0px 4px 6px rgba(0,0,0,0.5);
 
     --hr-color: #e1e1e195;
 
@@ -369,10 +373,11 @@ hr{
     color: var(--faq-content-text);
     height: max-content;
     overflow: hidden;
-    background-color: transparent;
+    background-color: var(--faq-content-bg);
     text-align: justify;
     max-height: 0px;
     transition: max-height 0.4s, padding 0.4s;
+    box-shadow: var(--faq-content-shadow);
 }
 
 /* Card Component Styling */
