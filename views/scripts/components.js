@@ -1,3 +1,64 @@
+// ========================================
+// SKELETON LOADER UTILITIES
+// ========================================
+
+/**
+ * Shows skeleton loader and hides content
+ * @param {string} skeletonId - ID of the skeleton loader element
+ * @param {string} contentId - ID of the content element
+ */
+function showSkeleton(skeletonId, contentId) {
+  const skeleton = document.getElementById(skeletonId);
+  const content = document.getElementById(contentId);
+  
+  if (skeleton) {
+    skeleton.style.display = 'flex';
+  }
+  if (content) {
+    content.classList.add('skeleton-hidden');
+  }
+}
+
+/**
+ * Hides skeleton loader and shows content with fade-in animation
+ * @param {string} skeletonId - ID of the skeleton loader element
+ * @param {string} contentId - ID of the content element
+ */
+function hideSkeleton(skeletonId, contentId) {
+  const skeleton = document.getElementById(skeletonId);
+  const content = document.getElementById(contentId);
+  
+  if (skeleton) {
+    skeleton.style.display = 'none';
+  }
+  if (content) {
+    content.classList.remove('skeleton-hidden');
+    content.classList.add('content-loaded');
+  }
+}
+
+/**
+ * Simulates a delay (useful for demonstrating skeleton loaders)
+ * @param {number} ms - Milliseconds to delay
+ * @returns {Promise}
+ */
+function delay(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+// Initialize skeleton loaders when DOM is ready
+document.addEventListener('DOMContentLoaded', function() {
+  // Show skeletons initially
+  showSkeleton('faq-skeleton', 'faq-content');
+  showSkeleton('features-skeleton', 'features-content');
+  
+  // Hide feature skeletons after a short delay (simulating page load)
+  // Features are static content, so they load quickly
+  setTimeout(() => {
+    hideSkeleton('features-skeleton', 'features-content');
+  }, 800);
+});
+
 class Dropdown {
     constructor(selector, onChange) {
         this.dropdown = document.querySelector(selector)
@@ -240,6 +301,11 @@ fetch('/faqs.json')
     }
 
     renderFAQs(faqs.slice(0, 5)); // Load initial FAQs
+    
+    // Hide skeleton loader after FAQ data is loaded
+    setTimeout(() => {
+      hideSkeleton('faq-skeleton', 'faq-content');
+    }, 600); // Small delay for smooth transition
 
     searchInput.addEventListener('input', () => {
       const q = searchInput.value.toLowerCase();
@@ -252,6 +318,10 @@ fetch('/faqs.json')
   })
   .catch(err => {
     console.error('FAQ loading failed:', err);
+    
+    // Hide skeleton and show error
+    hideSkeleton('faq-skeleton', 'faq-content');
+    
     const container = document.getElementById('faq-section');
     if (container) {
       container.innerHTML = `<p style="color:red; text-align:center;">Error loading FAQs. Please try again later.</p>`;
