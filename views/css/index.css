@@ -569,3 +569,18 @@ hr{
   .image-container.shine-active .invite-text {
     opacity: 1; /* Show the text when shine effect reaches the middle */
   }
+
+/*Adding styling for Scroll Up Button*/
+  #scrollTopBtn{
+    /* all: unset; */
+    position: fixed;
+    bottom: 25px;
+    right: 50px;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 99%;
+  }

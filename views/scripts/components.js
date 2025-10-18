@@ -1,5 +1,3 @@
-
-
 class Dropdown {
     constructor(selector, onChange) {
         this.dropdown = document.querySelector(selector)
@@ -259,3 +257,28 @@ fetch('/faqs.json')
       container.innerHTML = `<p style="color:red; text-align:center;">Error loading FAQs. Please try again later.</p>`;
     }
   });
+
+
+//Scroll Button Functionality
+// Get reference to the button
+const scrollBtn = document.getElementById('scrollTopBtn');
+
+// Show or hide button based on scroll position
+  window.addEventListener('scroll', () => {
+    // Show button if user has scrolled down more than 300px
+    if (window.scrollY > 300) {
+      scrollBtn.classList.remove('opacity-0', 'pointer-events-none');
+      scrollBtn.classList.add('opacity-100');
+    } else {
+      scrollBtn.classList.remove('opacity-100');
+      scrollBtn.classList.add('opacity-0', 'pointer-events-none');
+    }
+  });
+// Scroll smoothly to top when button is clicked
+  scrollBtn.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+
