@@ -570,6 +570,7 @@ hr{
     opacity: 1; /* Show the text when shine effect reaches the middle */
   }
 
+/*Adding styling for Scroll Up Button*/
   #scrollTopBtn{
     /* all: unset; */
     position: fixed;
