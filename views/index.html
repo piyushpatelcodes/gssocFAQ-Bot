@@ -1824,10 +1824,37 @@
       >
         Regarding GSSOC FAQ BOT
       </p>
+      
+      <!-- FAQ Search Bar -->
+      <div class="tw-w-full tw-max-w-[850px] tw-mt-6">
+        <div class="tw-relative tw-w-full">
+          <div class="tw-absolute tw-left-4 tw-top-1/2 tw--translate-y-1/2 tw-text-gray-400 dark:tw-text-gray-500">
+            <i class="bi bi-search tw-text-lg"></i>
+          </div>
+          <input
+            type="text"
+            id="faq-search-input"
+            placeholder="Search FAQs... (e.g., 'contribute', 'bot features', 'free')"
+            class="tw-w-full tw-px-12 tw-py-3 tw-text-base tw-rounded-xl tw-border-2 tw-border-gray-300 dark:tw-border-gray-600 tw-bg-white dark:tw-bg-[#17181b] tw-text-gray-800 dark:tw-text-gray-200 tw-outline-none focus:tw-border-purple-500 dark:focus:tw-border-purple-400 tw-transition-colors tw-duration-300 placeholder:tw-text-gray-400 dark:placeholder:tw-text-gray-500"
+          />
+          <button
+            id="faq-search-clear"
+            class="tw-absolute tw-right-4 tw-top-1/2 tw--translate-y-1/2 tw-text-gray-400 dark:tw-text-gray-500 hover:tw-text-gray-600 dark:hover:tw-text-gray-300 tw-transition-colors tw-hidden"
+            aria-label="Clear search"
+          >
+            <i class="bi bi-x-circle-fill tw-text-xl"></i>
+          </button>
+        </div>
+        <div id="faq-search-results" class="tw-mt-2 tw-text-sm tw-text-gray-600 dark:tw-text-gray-400 tw-text-center tw-hidden">
+          <span id="faq-result-count"></span>
+        </div>
+      </div>
+      
       <div
+        id="faq-container"
         class="tw-mt-5 tw-flex tw-min-h-[300px] tw-w-full tw-max-w-[850px] tw-flex-col tw-gap-4"
       >
-        <div class="faq tw-w-full">
+        <div class="faq tw-w-full" data-faq-item data-faq-question="what's gssoc faq bot" data-faq-answer="discord bot streamline answering frequently asked questions managers mentors gssoc community automates responses common questions instant answers new members reducing workload">
           <h4
             class="faq-accordion tw-flex tw-w-full tw-select-none tw-text-xl max-md:tw-text-lg"
           >
@@ -1888,7 +1915,7 @@
           </div>
         </div>
         <hr />
-        <div class="faq tw-w-full">
+        <div class="faq tw-w-full" data-faq-item data-faq-question="what all other features does the gssoc faq bot provide" data-faq-answer="features bot project details comprehensive information complete overview search functionality autocomplete support projects phase name technology">
           <h4
             class="faq-accordion tw-flex tw-w-full tw-select-none tw-text-xl max-md:tw-text-lg"
           >
@@ -1948,7 +1975,7 @@
           </div>
         </div>
         <hr />
-        <div class="faq tw-w-full">
+        <div class="faq tw-w-full" data-faq-item data-faq-question="how to contribute in gssoc" data-faq-answer="contributing easy visit project list select fork clone repository make changes commit push pull request star repository github open source contribution">
           <h4
             class="faq-accordion tw-flex tw-w-full tw-select-none tw-text-xl max-md:tw-text-lg"
           >
@@ -2051,7 +2078,7 @@
         </div>
         <hr />
 
-        <div class="faq tw-w-full">
+        <div class="faq tw-w-full" data-faq-item data-faq-question="is gssoc faq bot free to use" data-faq-answer="yes free absolutely private servers traffic requests testimonial users experiences images action best part">
           <h4
             class="faq-accordion tw-flex tw-w-full tw-select-none tw-text-xl max-md:tw-text-lg"
           >

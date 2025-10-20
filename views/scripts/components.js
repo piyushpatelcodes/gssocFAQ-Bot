@@ -259,6 +259,155 @@ fetch('/faqs.json')
   });
 
 
+// ========================================
+// FAQ SEARCH & FILTER FUNCTIONALITY
+// ========================================
+
+document.addEventListener('DOMContentLoaded', function() {
+  const searchInput = document.getElementById('faq-search-input');
+  const clearButton = document.getElementById('faq-search-clear');
+  const resultsDiv = document.getElementById('faq-search-results');
+  const resultCount = document.getElementById('faq-result-count');
+  const faqContainer = document.getElementById('faq-container');
+  
+  if (!searchInput || !faqContainer) return;
+  
+  // Get all FAQ items
+  const faqItems = faqContainer.querySelectorAll('[data-faq-item]');
+  const totalFaqs = faqItems.length;
+  
+  /**
+   * Filter FAQ items based on search query
+   */
+  function filterFAQs() {
+    const query = searchInput.value.toLowerCase().trim();
+    
+    // Show/hide clear button
+    if (query.length > 0) {
+      clearButton.classList.remove('tw-hidden');
+    } else {
+      clearButton.classList.add('tw-hidden');
+    }
+    
+    // If query is empty, show all FAQs
+    if (query.length === 0) {
+      faqItems.forEach(item => {
+        item.style.display = '';
+        item.classList.remove('faq-highlight');
+        const hr = item.nextElementSibling;
+        if (hr && hr.tagName === 'HR') {
+          hr.style.display = '';
+        }
+      });
+      resultsDiv.classList.add('tw-hidden');
+      return;
+    }
+    
+    let visibleCount = 0;
+    
+    // Filter FAQs
+    faqItems.forEach((item, index) => {
+      const question = item.getAttribute('data-faq-question') || '';
+      const answer = item.getAttribute('data-faq-answer') || '';
+      const searchText = (question + ' ' + answer).toLowerCase();
+      
+      const matches = searchText.includes(query);
+      
+      if (matches) {
+        item.style.display = '';
+        item.classList.add('faq-highlight');
+        visibleCount++;
+        
+        // Show separator if not last visible item
+        const hr = item.nextElementSibling;
+        if (hr && hr.tagName === 'HR') {
+          hr.style.display = '';
+        }
+      } else {
+        item.style.display = 'none';
+        item.classList.remove('faq-highlight');
+        
+        // Hide separator
+        const hr = item.nextElementSibling;
+        if (hr && hr.tagName === 'HR') {
+          hr.style.display = 'none';
+        }
+      }
+    });
+    
+    // Update results count
+    resultsDiv.classList.remove('tw-hidden');
+    if (visibleCount === 0) {
+      resultCount.innerHTML = `
+        <i class="bi bi-info-circle tw-mr-1"></i>
+        No FAQs found for "<strong>${escapeHtml(query)}</strong>". Try different keywords.
+      `;
+      resultCount.className = 'tw-text-orange-600 dark:tw-text-orange-400';
+    } else if (visibleCount === totalFaqs) {
+      resultCount.innerHTML = `
+        <i class="bi bi-check-circle tw-mr-1"></i>
+        Showing all <strong>${totalFaqs}</strong> FAQs
+      `;
+      resultCount.className = 'tw-text-green-600 dark:tw-text-green-400';
+    } else {
+      resultCount.innerHTML = `
+        <i class="bi bi-funnel tw-mr-1"></i>
+        Found <strong>${visibleCount}</strong> of ${totalFaqs} FAQs matching "<strong>${escapeHtml(query)}</strong>"
+      `;
+      resultCount.className = 'tw-text-purple-600 dark:tw-text-purple-400';
+    }
+  }
+  
+  /**
+   * Clear search input and reset filters
+   */
+  function clearSearch() {
+    searchInput.value = '';
+    searchInput.focus();
+    filterFAQs();
+  }
+  
+  /**
+   * Escape HTML to prevent XSS
+   */
+  function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+  }
+  
+  // Event listeners
+  searchInput.addEventListener('input', filterFAQs);
+  searchInput.addEventListener('keyup', function(e) {
+    if (e.key === 'Escape') {
+      clearSearch();
+    }
+  });
+  
+  clearButton.addEventListener('click', clearSearch);
+  
+  // Add subtle animation to highlighted FAQs
+  const style = document.createElement('style');
+  style.textContent = `
+    .faq-highlight {
+      animation: highlightFade 0.3s ease-in-out;
+    }
+    
+    @keyframes highlightFade {
+      0% {
+        transform: translateX(-5px);
+        opacity: 0.7;
+      }
+      100% {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+  `;
+  document.head.appendChild(style);
+});
+
+
 //Scroll Button Functionality
 // Get reference to the button
 const scrollBtn = document.getElementById('scrollTopBtn');
