@@ -276,3 +276,146 @@ fetch('/faqs.json')
       container.innerHTML = `<p style="color:red; text-align:center;">Error loading FAQs. Please try again later.</p>`;
     }
   });
+
+// FAQ suggestions for chat input
+;(function(){
+  let faqsCache = [];
+  fetch('/faqs.json').then(r=>r.json()).then(data=>{ faqsCache = data; console.debug('faqsCache loaded', faqsCache.length) }).catch((e)=>{ console.debug('faqs load failed', e) })
+
+  const promptForm = document.querySelector('#prompt-form');
+  if (!promptForm) return;
+  const input = promptForm.querySelector('input[name="prompt"]');
+  const suggestionsBox = document.getElementById('faq-suggestions');
+  if (!input || !suggestionsBox) return;
+
+  // Move suggestions box to document.body to avoid overflow/z-index clipping
+  try {
+    if (suggestionsBox.parentElement !== document.body) {
+      document.body.appendChild(suggestionsBox);
+    }
+  } catch (e) {
+    console.debug('Could not move suggestionsBox to body', e);
+  }
+
+    // Ensure visible styling (inline styles to match previous behavior)
+    suggestionsBox.style.position = 'absolute';
+    suggestionsBox.style.background = getComputedStyle(document.body).color ? '#fff' : '#0b0b0b';
+    suggestionsBox.style.color = '#111';
+    suggestionsBox.style.boxShadow = '0 8px 24px rgba(15,23,42,0.12)';
+    suggestionsBox.style.border = '1px solid rgba(0,0,0,0.08)';
+    suggestionsBox.style.borderRadius = '8px';
+    suggestionsBox.style.padding = '4px 4px';
+    suggestionsBox.style.zIndex = '99999';
+
+  function positionSuggestions(){
+    const rect = input.getBoundingClientRect();
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+    suggestionsBox.style.left = `${rect.left + scrollLeft}px`;
+    suggestionsBox.style.top = `${rect.bottom + scrollTop + 6}px`;
+    suggestionsBox.style.width = `${rect.width}px`;
+    // ensure max height fits viewport
+    const maxH = Math.min(window.innerHeight - rect.bottom - 24, 320);
+    suggestionsBox.style.maxHeight = `${maxH}px`;
+  }
+
+  // initial position and on resize/scroll
+  positionSuggestions();
+  window.addEventListener('resize', positionSuggestions);
+  window.addEventListener('scroll', positionSuggestions, true);
+  const promptContainer = document.getElementById('prompt-container');
+
+  let activeIndex = -1;
+  let currentMatches = [];
+
+  function hideSuggestions(){ suggestionsBox.style.display='none'; activeIndex=-1 }
+  function showSuggestions(){ suggestionsBox.style.display='block' }
+
+  function renderSuggestions(list){
+    console.debug('renderSuggestions', list.length)
+    if(!list || list.length===0){ suggestionsBox.innerHTML = '<div style="padding:8px;color:#666">No suggestions</div>'; showSuggestions(); return }
+  suggestionsBox.innerHTML = list.map((f,i)=>`<div class="faq-suggestion-item" data-idx="${i}" style="padding:8px;cursor:pointer;border-bottom:1px solid rgba(0,0,0,0.05);white-space:normal">${escapeHtml(f.question)}</div>`).join('')
+    showSuggestions();
+    // attach click handlers
+    suggestionsBox.querySelectorAll('.faq-suggestion-item').forEach(el=>{
+      el.addEventListener('click', ()=>{
+        const idx = Number(el.getAttribute('data-idx'))
+        selectSuggestion(idx)
+      })
+    })
+  }
+
+  function escapeHtml(s){ return String(s||'').replace(/[&<>\"]/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[ch])) }
+
+  function selectSuggestion(i){
+    const faq = currentMatches[i];
+    if(!faq) return;
+    // insert user message bubble
+    const userDiv = document.createElement('div');
+    userDiv.className = 'tw-w-full tw-flex tw-p-2';
+    userDiv.innerHTML = `<div class="tw-w-fit tw-ml-auto tw-p-2 tw-rounded-xl tw-bg-gray-100 dark:tw-bg-[#171717]">${escapeHtml(faq.question)}</div>`;
+    promptContainer.appendChild(userDiv);
+    // insert answer bubble
+    const botDiv = document.createElement('div');
+    botDiv.className = 'tw-w-full tw-flex tw-p-2';
+    botDiv.innerHTML = `<div class="tw-w-fit tw-mr-auto tw-p-2">${faq.answer}</div>`;
+    promptContainer.appendChild(botDiv);
+    promptContainer.scrollTop = promptContainer.scrollHeight;
+    // clear input and hide suggestions
+    input.value = '';
+    hideSuggestions();
+  }
+
+  input.addEventListener('input', (e)=>{
+    const q = input.value.trim().toLowerCase();
+    if (!q){ hideSuggestions(); return }
+    currentMatches = faqsCache.filter(f=> f.question.toLowerCase().includes(q) || f.answer.toLowerCase().includes(q)).slice(0,8)
+    renderSuggestions(currentMatches)
+  })
+
+  // Remove debug overlay and focus-fallback for production use
+
+  input.addEventListener('keydown', (e)=>{
+    const items = suggestionsBox.querySelectorAll('.faq-suggestion-item');
+    if(e.key === 'ArrowDown'){
+      e.preventDefault(); activeIndex = Math.min(activeIndex+1, items.length-1); highlight(items, activeIndex)
+    }else if(e.key === 'ArrowUp'){
+      e.preventDefault(); activeIndex = Math.max(activeIndex-1, 0); highlight(items, activeIndex)
+    }else if(e.key === 'Enter'){
+      if(activeIndex >=0 && activeIndex < currentMatches.length){ e.preventDefault(); selectSuggestion(activeIndex) }
+    }else if(e.key === 'Escape'){
+      hideSuggestions()
+    }
+  })
+
+  function highlight(items, idx){ items.forEach((it,i)=>{ it.style.background = (i===idx)?'#eef2ff':'transparent' }) }
+
+  // click outside to hide
+  document.addEventListener('click', (ev)=>{ if (!promptForm.contains(ev.target)) hideSuggestions() })
+
+  // also if the form is submitted manually, try to match exact question and show answer
+  promptForm.addEventListener('submit', (ev)=>{
+    ev.preventDefault();
+    const q = input.value.trim();
+    if(!q) return;
+    const exact = faqsCache.find(f=> f.question.toLowerCase() === q.toLowerCase());
+    if(exact){
+      // simulate selection
+      currentMatches = [exact];
+      selectSuggestion(0);
+      return;
+    }
+    // fallback: add user message and generic reply
+    const userDiv = document.createElement('div');
+    userDiv.className = 'tw-w-full tw-flex tw-p-2';
+    userDiv.innerHTML = `<div class="tw-w-fit tw-ml-auto tw-p-2 tw-rounded-xl tw-bg-gray-100 dark:tw-bg-[#171717]">${escapeHtml(q)}</div>`;
+    promptContainer.appendChild(userDiv);
+    const botDiv = document.createElement('div');
+    botDiv.className = 'tw-w-full tw-flex tw-p-2';
+    botDiv.innerHTML = `<div class="tw-w-fit tw-mr-auto tw-p-2">No matching FAQ found. Try selecting one from suggestions.</div>`;
+    promptContainer.appendChild(botDiv);
+    promptContainer.scrollTop = promptContainer.scrollHeight;
+    input.value = '';
+  })
+
+})();

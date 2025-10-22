@@ -533,6 +533,16 @@ client.on(Events.InteractionCreate, async (interaction) => {
 app.use("/docs", express.static(path.join(__dirname, "views")));
 app.use("/docs", documentationRoute);
 
+// Serve faqs.json to the frontend (some scripts fetch('/faqs.json'))
+app.get('/faqs.json', (req, res) => {
+  try {
+    res.json(faqs);
+  } catch (err) {
+    console.error('Failed to serve faqs.json', err);
+    res.status(500).json({ error: 'Failed to load faqs' });
+  }
+});
+
 
 app.listen(3000, () => {
   console.log(`🚀 Running at http://localhost:3000/docs`);
