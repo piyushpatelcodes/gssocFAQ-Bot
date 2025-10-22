@@ -63,7 +63,7 @@
       <a class="tw-flex tw-p-[4px] tw-gap-2 tw-place-items-center" href="#">
         <div class="tw-h-[100px] tw-max-w-[100px]">
           <img
-            src="/assets/logo/2.png"
+            src="assets/logo/2.png"
             alt="logo"
             class="tw-object-contain tw-h-full tw-w-full"
           />
@@ -98,7 +98,8 @@
                 <!-- /project block -->
                 <a
                   class="tw-flex tw-items-start tw-gap-4 tw-p-4 hover:tw-bg-gray-100 dark:hover:tw-bg-gray-900 tw-rounded-lg transition-all"
-                  href="#command"
+                  href="#"
+                  onclick="scrollToWithOffset('project-command'); return false;"
                 >
                   <div
                     class="tw-text-xl tw-text-gray-700 dark:tw-text-gray-300 tw-pt-1"
@@ -123,7 +124,8 @@
                 <!-- Unified Interface block -->
                 <a
                   class="tw-flex tw-items-start tw-gap-4 tw-p-4 hover:tw-bg-gray-100 dark:hover:tw-bg-gray-900 tw-rounded-lg transition-all"
-                  href="#command"
+                  href="#"
+                  onclick="scrollToWithOffset('faq-command'); return false;"
                 >
                   <div
                     class="tw-text-xl tw-text-gray-700 dark:tw-text-gray-300 tw-pt-1"
@@ -312,17 +314,17 @@
                     <div class="tw-flex tw--space-x-4">
                       <img
                         class="tw-z-10 tw-w-10 tw-h-10 tw-object-cover tw-rounded-full tw-border-2 tw-border-white"
-                        src="/assets/images/people/man.jpg"
+                        src="assets/images/people/man.jpg"
                         alt="Avatar 1"
                       />
                       <img
                         class="tw-z-[4] tw-w-10 tw-h-10 tw-object-cover tw-rounded-full tw-border-2 tw-border-white"
-                        src="/assets/images/people/women.jpg"
+                        src="assets/images/people/women.jpg"
                         alt="Avatar 2"
                       />
                       <img
                         class="tw-z-[3] tw-w-10 tw-h-10 tw-object-cover tw-rounded-full tw-border-2 tw-border-white"
-                        src="/assets/images/people/man2.jpg"
+                        src="assets/images/people/man2.jpg"
                         alt="Avatar 3"
                       />
                       <img
@@ -416,7 +418,7 @@
                       class="tw-absolute tw-top-[20%] max-lg:tw-top-[30%] tw-left-1/2 tw--translate-x-1/2 tw-w-[150px] tw-h-[150px]"
                     >
                       <img
-                        src="/public/assets/logo/logo.png"
+                        src="../public/assets/logo/logo.png"
                         class="tw-w-full tw-h-full dark:tw-invert tw-object-contain tw-opacity-20"
                         alt="gssoc faq logo"
                       />
@@ -465,7 +467,7 @@
                           >
                             <div class="tw-w-[20px] tw-h-[20px]">
                               <img
-                                src="/assets/images/brand-logos/openai.svg"
+                                src="assets/images/brand-logos/openai.svg"
                                 alt="Gpt3.5"
                                 class="dropdown-select-icon dark:tw-invert"
                               />
@@ -482,10 +484,10 @@
                         <ul
                           class="dropdown-menu tw-shadow-md tw-bottom-[50px] max-lg:tw-top-[105%] max-lg:tw-bottom-[unset]"
                         >
-                          <li class="tw-flex tw-gap-2 tw-place-items-center">
+                          <li class="tw-flex tw-gap-2 tw-place-items-center cursor-pointer" onclick="scrollToWithOffset('faq-command')">
                             <div class="tw-w-[20px] tw-h-[20px]">
                               <img
-                                src="/assets/images/brand-logos/openai.svg"
+                                src="assets/images/brand-logos/openai.svg"
                                 alt="Gpt-4o"
                                 class="dropdown-menu-icon dark:tw-invert"
                               />
@@ -493,11 +495,10 @@
                             </div>
                             <span class="dropdown-text">/faq</span>
                           </li>
-
-                          <li class="tw-flex tw-gap-2 tw-place-items-center">
-                            <div class="tw-w-[20px] tw-h-[20px]">
+                          <li class="tw-flex tw-gap-2 tw-place-items-center cursor-pointer" onclick="scrollToWithOffset('project-command')">
+                            <div class="tw-w-[20px] tw-h-[20px]" >
                               <img
-                                src="/assets/images/brand-logos/googlegemini.svg"
+                                src="assets/images/brand-logos/googlegemini.svg"
                                 alt="Gemini"
                                 class="dropdown-menu-icon dark:tw-invert"
                               />
@@ -517,7 +518,7 @@
                           <li class="tw-flex tw-gap-2 tw-place-items-center">
                             <div class="tw-w-[20px] tw-h-[20px]">
                               <img
-                                src="/assets/images/brand-logos/claude.svg"
+                                src="assets/images/brand-logos/claude.svg"
                                 alt="Perplexity"
                                 class="dropdown-menu-icon dark:tw-invert"
                               />
@@ -567,7 +568,7 @@
           <!-- add the brands using your app  -->
           <div class="carousel-img tw-h-[30px] tw-w-[150px]">
             <img
-              src="/assets/images/brand-logos/google.svg"
+              src="assets/images/brand-logos/google.svg"
               alt="Google"
               class="tw-h-full tw-w-full tw-object-contain tw-grayscale tw-transition-colors hover:tw-grayscale-0"
               srcset=""
@@ -575,7 +576,7 @@
           </div>
           <div class="carousel-img tw-h-[30px] tw-w-[150px]">
             <img
-              src="/assets/images/brand-logos/microsoft.svg"
+              src="assets/images/brand-logos/microsoft.svg"
               alt="Microsoft"
               class="tw-h-full tw-w-full tw-object-contain tw-grayscale tw-transition-colors hover:tw-grayscale-0"
               srcset=""
@@ -583,7 +584,7 @@
           </div>
           <div class="carousel-img tw-h-[30px] tw-w-[150px]">
             <img
-              src="/assets/images/brand-logos/adobe.svg"
+              src="assets/images/brand-logos/adobe.svg"
               alt="Adobe"
               class="tw-h-full tw-w-full tw-object-contain tw-grayscale tw-transition-colors hover:tw-grayscale-0"
               srcset=""
@@ -591,7 +592,7 @@
           </div>
           <div class="carousel-img tw-h-[30px] tw-w-[150px]">
             <img
-              src="/assets/images/brand-logos/airbnb.svg"
+              src="assets/images/brand-logos/airbnb.svg"
               alt="Airbnb"
               class="tw-h-full tw-w-full tw-object-contain tw-grayscale tw-transition-colors hover:tw-grayscale-0"
               srcset=""
@@ -599,7 +600,7 @@
           </div>
           <div class="carousel-img tw-h-[30px] tw-w-[150px]">
             <img
-              src="/assets/images/brand-logos/stripe.svg"
+              src="assets/images/brand-logos/stripe.svg"
               alt="Stripe"
               class="tw-h-full tw-w-full tw-object-contain tw-grayscale tw-transition-colors hover:tw-grayscale-0"
               srcset=""
@@ -607,7 +608,7 @@
           </div>
           <div class="carousel-img tw-h-[30px] tw-w-[150px]">
             <img
-              src="/assets/images/brand-logos/reddit.svg"
+              src="assets/images/brand-logos/reddit.svg"
               alt="Reddit"
               class="tw-h-full tw-w-full tw-object-contain tw-grayscale tw-transition-colors hover:tw-grayscale-0"
               srcset=""
@@ -684,7 +685,7 @@
                   class="tw-overflow-hidden tw-w-full tw-min-h-[180px] tw-h-[180px]"
                 >
                   <img
-                    src="/assets/images/home/que.png"
+                    src="assets/images/home/que.png"
                     class="tw-w-full tw-object-contain tw-h-auto tw-rounded-md"
                     alt="unified interface"
                   />
@@ -721,7 +722,7 @@
                   class="tw-w-full tw-min-h-[180px] tw-h-[180px] tw-overflow-hidden"
                 >
                   <img
-                    src="/assets/images/home/table.jpg"
+                    src="assets/images/home/table.jpg"
                     alt="API"
                     class="tw-w-full tw-h-auto tw-object-contain tw-rounded-md"
                   />
@@ -759,7 +760,7 @@
                   class="tw-w-full tw-flex tw-place-contet-center tw-min-h-[180px] tw-h-[180px] tw-rounded-xl tw-overflow-hidden"
                 >
                   <img
-                    src="/assets/images/home/server.png"
+                    src="assets/images/home/server.png"
                     class="tw-w-full tw-h-auto tw-object-contain tw-rounded-md"
                     alt="Prebuilt integrations"
                   />
@@ -796,7 +797,7 @@
                 class="tw-text-6xl tw-overflow-hidden tw-rounded-xl tw-w-full tw-h-full max-md:tw-h-[180px]"
               >
                 <img
-                  src="/assets/images/home/ai-models.png"
+                  src="assets/images/home/ai-models.png"
                   class="tw-w-full tw-object-contain tw-h-full"
                   alt="AI models"
                 />
@@ -869,7 +870,7 @@
               ><i class="bi bi-discord"></i>
               Add To Server
             </a>
-            <!-- <img id="command-preview-img" alt="command-preview-img" src="/assets/logo/2.png" /> -->
+            <!-- <img id="command-preview-img" alt="command-preview-img" src="assets/logo/2.png" /> -->
             <br />
             <video
               width="320"
@@ -879,7 +880,7 @@
               autoplay
               class="tw-rounded-lg"
             >
-              <source src="/assets/videos/faq-video.mp4" type="video/mp4" />
+              <source src="assets/videos/faq-video.mp4" type="video/mp4" />
             </video>
           </div>
         </div>
@@ -887,9 +888,8 @@
         <div
           class="tw-flex tw-flex-col tw-gap-10 tw-h-full tw-max-w-1/2 max-lg:tw-max-w-full tw-px-[10%] max-lg:tw-px-4 max-lg:tw-gap-3 max-lg:tw-w-full lg:tw-top-[20%] tw-place-items-center"
         >
-          <div class="reveal-up tw-h-[240px] tw-w-[450px] max-md:tw-w-full">
+          <div class="reveal-up tw-h-[240px] tw-w-[450px] max-md:tw-w-full" id="faq-command">
             <a
-              href="#"
               data-img="/assets/images/home/server.png"
               class="tw-flex tw-w-full tw-h-full tw-gap-8 tw-rounded-xl hover:tw-shadow-lg dark:tw-shadow-[#171717] tw-duration-300 tw-transition-all tw-p-8 tw-group/card groupcard"
             >
@@ -919,9 +919,8 @@
             </a>
           </div>
 
-          <div class="reveal-up tw-h-[240px] tw-w-[450px] max-md:tw-w-full">
+          <div class="reveal-up tw-h-[240px] tw-w-[450px] max-md:tw-w-full"  id="project-command">
             <a
-              href="#"
               data-img="/assets/images/home/que.png"
               class="tw-flex tw-w-full tw-h-full tw-gap-8 tw-rounded-xl hover:tw-shadow-lg dark:tw-shadow-[#171717] tw-duration-300 tw-transition-all tw-p-8 tw-group/card groupcard"
             >
@@ -1096,7 +1095,7 @@
               class="tw-w-full tw-h-[250px] tw-p-4 tw-rounded-xl tw-backdrop-blur-2xl tw-overflow-hidden tw-flex tw-place-content-center"
             >
               <img
-                src="/assets/logo/1.png"
+                src="assets/logo/1.png"
                 alt="Prompt library"
                 class="tw-w-auto tw-h-full tw-object-contain tw-rounded-lg"
               />
@@ -1117,7 +1116,7 @@
               class="tw-w-full tw-h-[250px] tw-p-4 tw-rounded-xl tw-backdrop-blur-2xl tw-overflow-hidden tw-flex tw-place-content-center"
             >
               <img
-                src="/assets/images/home/leaderboard.jpg"
+                src="assets/images/home/leaderboard.jpg"
                 alt="Web search"
                 class="tw-w-auto tw-h-full tw-object-contain tw-rounded-lg"
               />
@@ -1138,7 +1137,7 @@
               class="tw-w-full tw-h-[250px] tw-p-4 tw-rounded-xl tw-backdrop-blur-2xl tw-overflow-hidden tw-flex tw-place-content-center"
             >
               <img
-                src="/assets/images/home/fun.png"
+                src="assets/images/home/fun.png"
                 alt="fin commands"
                 class="tw-w-auto tw-h-full tw-object-contain tw-rounded-lg"
               />
@@ -1242,7 +1241,7 @@
             class="reveal-up tw-flex tw-w-full tw-max-w-[650px] max-md:tw-max-w-full tw-flex-col tw-place-items-center tw-gap-2 tw-rounded-lg tw-border-[1px] tw-border-outlineColor tw-bg-white dark:tw-bg-[#080808] dark:tw-border-[#1f2123] tw-p-2 tw-shadow-xl max-lg:tw-w-[320px]"
           >
             <img
-              src="/assets/images/home/gssocfaqbot.png"
+              src="assets/images/home/gssocfaqbot.png"
               alt="Multi sub"
               class="tw-rounded-lg"
             />
@@ -1254,7 +1253,7 @@
             class="reveal-up tw-flex tw-w-full tw-max-w-[650px] tw-flex-col tw-place-items-center tw-gap-2 tw-rounded-lg tw-border-[1px] tw-border-outlineColor tw-bg-white dark:tw-bg-[#080808] dark:tw-border-[#1f2123] tw-p-2 tw-shadow-xl max-lg:tw-w-[320px]"
           >
             <img
-              src="/assets/images/home/promopost.jpg"
+              src="assets/images/home/promopost.jpg"
               alt="promo post"
               class="tw-rounded-lg"
               style="width: 400px; height: auto"
@@ -1305,7 +1304,7 @@
               class="tw-h-[50px] tw-w-[50px] tw-overflow-hidden tw-rounded-full"
             >
               <img
-                src="/assets/images/people/piyush.png"
+                src="assets/images/people/piyush.png"
                 class="tw-h-full tw-w-full tw-object-cover"
                 alt="man"
               />
@@ -1343,7 +1342,7 @@
           </p> -->
           <a target="_blank" href="https://discord.com/oauth2/authorize?client_id=1396740851056640091&permissions=8&integration_type=0&scope=bot+applications.commands">
             <div class="image-container">
-              <img class="tw-rounded-xl" src="/assets/logo/1.png" />
+              <img class="tw-rounded-xl" src="assets/logo/1.png" />
               <!-- Invite text and icon -->
               <div
                 class="invite-text tw-rounded-md"
@@ -1370,7 +1369,7 @@
               class="tw-h-[50px] tw-w-[50px] tw-overflow-hidden tw-rounded-full"
             >
               <img
-                src="/assets/logo/1.png"
+                src="assets/logo/1.png"
                 class="tw-h-full tw-w-full tw-object-cover"
                 alt="discord user"
               />
@@ -1384,7 +1383,7 @@
           </div>
 
           <img
-            src="/assets/images/people/testimonial1.png"
+            src="assets/images/people/testimonial1.png"
             style="border: 1px solid rgba(255, 255, 255, 0.184)"
             class="tw-rounded-lg"
           />
@@ -1398,7 +1397,7 @@
               class="tw-h-[50px] tw-w-[50px] tw-overflow-hidden tw-rounded-full"
             >
               <img
-                src="/assets/logo/1.png"
+                src="assets/logo/1.png"
                 class="tw-h-full tw-w-full tw-object-cover"
                 alt="discord user"
               />
@@ -1428,7 +1427,7 @@
             Whoever made this gssocfaq bot is genius. Bot is actually good.
           </p>
           <img
-            src="/assets/images/people/testimonial2.png"
+            src="assets/images/people/testimonial2.png"
             alt="testimonial2"
             class="tw-rounded-lg"
             style="border: 1px solid rgba(255, 255, 255, 0.184)"
@@ -1443,7 +1442,7 @@
               class="tw-h-[50px] tw-w-[50px] tw-overflow-hidden tw-rounded-full"
             >
               <img
-                src="/assets/logo/1.png"
+                src="assets/logo/1.png"
                 class="tw-h-full tw-w-full tw-object-cover tw-rounded-lg"
                 alt="man"
               />
@@ -1461,7 +1460,7 @@
             vero.
           </p> -->
           <img
-            src="/assets/images/people/testimonial4.png"
+            src="assets/images/people/testimonial4.png"
             alt="testimonial4"
             class="tw-rounded-lg"
             style="border: 1px solid rgba(255, 255, 255, 0.184)"
@@ -1476,7 +1475,7 @@
               class="tw-h-[50px] tw-w-[50px] tw-overflow-hidden tw-rounded-full"
             >
               <img
-                src="/assets/logo/1.png"
+                src="assets/logo/1.png"
                 class="tw-h-full tw-w-full tw-object-cover"
                 alt="user3"
               />
@@ -1494,7 +1493,7 @@
             vero. Lorem, ipsum dolor.
           </p> -->
           <img
-            src="/assets/images/people/testimonial3.png"
+            src="assets/images/people/testimonial3.png"
             alt="testimonial3"
             class="tw-rounded-lg"
             style="border: 1px solid rgba(255, 255, 255, 0.184)"
@@ -1509,7 +1508,7 @@
               class="tw-h-[50px] tw-w-[50px] tw-overflow-hidden tw-rounded-full"
             >
               <img
-                src="/assets/logo/1.png"
+                src="assets/logo/1.png"
                 class="tw-h-full tw-w-full tw-object-cover"
                 alt="man"
               />
@@ -1529,7 +1528,7 @@
             officiis enim.
           </p> -->
           <img
-            src="/assets/images/people/testimonial5.png"
+            src="assets/images/people/testimonial5.png"
             alt="testimonial5"
             class="tw-rounded-lg"
             style="border: 1px solid rgba(255, 255, 255, 0.184)"
@@ -1730,7 +1729,7 @@
             class="tw-h-[350px] tw-min-h-[350px] tw-w-full tw-overflow-hidden tw-rounded-2xl"
           >
             <img
-              src="/assets/images/home/article1.png"
+              src="assets/images/home/article1.png"
               alt="article image"
               class="tw-h-full tw-w-full tw-object-cover tw-transition-transform tw-duration-700 hover:tw-scale-[1.3]"
               srcset=""
@@ -2206,7 +2205,7 @@
             class="tw-w-full tw-place-items-center tw-flex tw-flex-col tw-gap-6"
           >
             <img
-              src="/assets/logo/2.png"
+              src="assets/logo/2.png"
               alt="logo"
               srcset=""
               class="tw-max-w-[120px] "
@@ -2280,9 +2279,9 @@
         >
       </div>
     </footer>
-
+<!-- Scroll-to-Top Button -->
     <button id="scrollTopBtn"
-  class="fixed bottom-8 right-8 hidden z-[9999]
+     class="fixed bottom-8 right-8 hidden z-[9999]
          bg-white/20 dark:bg-gray-900/30 backdrop-blur-lg border border-white/30 dark:border-gray-200/20
          text-white dark:text-white rounded-full p-4
          shadow-lg dark:shadow-black/50
@@ -2290,11 +2289,19 @@
          hover:bg-white/40 dark:hover:bg-gray-800/50
          hover:scale-110 hover:shadow-2xl
          focus:outline-none focus:ring-4 focus:ring-white/40 dark:focus:ring-gray-300/40"
-  aria-label="Scroll to top">
-  <i class="bi bi-chevron-up text-2xl drop-shadow-md"></i>
-</button>
+        aria-label="Scroll to top">
+        <i class="bi bi-chevron-up text-2xl drop-shadow-md"></i>
+  </button>
 </body>
-
+<!--Adding ref for using Tailwind CSS-->
+  <script>
+    function scrollToWithOffset(id, offset = 120) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const y = el.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top: y, behavior: "smooth" });
+    }
+  </script>
   <script src="https://cdn.tailwindcss.com"></script>
   <script
     src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/gsap.min.js"
@@ -2318,6 +2325,6 @@
 
   <script src="./scripts/components.js"></script>
   <script src="./index.js"></script>
-
+  
   <!-- By piyushpatelcodes: https://github.com/piyushpatelcodes -->
 </html>
