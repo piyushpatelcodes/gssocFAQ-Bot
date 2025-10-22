@@ -148,6 +148,16 @@ If you need help or have questions:
 - Reach out to maintainers through issue comments
 - Be patient and respectful when seeking assistance
 
+## Using the new interactive Issue forms
+
+We now provide interactive GitHub Issue Forms to make filing bugs, feature requests, and questions easier and more structured. To create a new issue:
+
+1. Click the repository's "New issue" button on GitHub.
+2. Choose the appropriate form: "Bug report", "Feature request", or "Question / Support".
+3. Fill the required fields in the form — required fields will prevent submission until completed.
+
+These forms automatically apply labels (e.g., `bug`, `enhancement`, `question`) to help maintainers triage incoming reports. If you prefer the old templates, legacy copies are preserved in `.github/ISSUE_TEMPLATE/legacy/`.
+
 ## Important Notes
 
 - Do not submit AI-generated code without understanding and reviewing it

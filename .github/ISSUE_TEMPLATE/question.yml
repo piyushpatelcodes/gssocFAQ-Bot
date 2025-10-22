@@ -1,0 +1,40 @@
+name: "Question / Support"
+description: "Ask a question or request help using the project."
+title: "[question] "
+labels: ["question"]
+body:
+  - type: input
+    id: summary
+    attributes:
+      label: "Short summary"
+      description: "One-line summary of your question."
+      validations:
+        required: true
+
+  - type: dropdown
+    id: where
+    attributes:
+      label: "Where are you using the project?"
+      options:
+        - label: "Discord (bot)"
+          value: discord
+        - label: "Web UI"
+          value: web
+        - label: "Self-host / backend"
+          value: selfhost
+        - label: "Other"
+          value: other
+
+  - type: textarea
+    id: details
+    attributes:
+      label: "Details"
+      description: "Provide as much detail as needed to answer your question. Include configuration, commands, or links."
+      validations:
+        required: true
+
+  - type: input
+    id: tried
+    attributes:
+      label: "Docs or resources you've already checked"
+      description: "Optional: links to docs, StackOverflow or existing issues you checked."

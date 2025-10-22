@@ -1,0 +1,83 @@
+name: "Bug report"
+description: "Report a reproducible bug — required fields make triage faster."
+title: "[bug] "
+labels: ["bug", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please provide as much detail as possible. Fields marked required must be filled.
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: "Affected area"
+      description: "Where did you encounter the issue?"
+      options:
+        - label: "Discord bot"
+          value: discord
+        - label: "Web UI"
+          value: web
+        - label: "Backend / API"
+          value: backend
+        - label: "Documentation"
+          value: docs
+        - label: "Other"
+          value: other
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: "Steps to reproduce"
+      description: "List the exact steps required to reproduce the bug. Include commands, inputs and copies of messages if relevant."
+      placeholder: "1. ...\n2. ..."
+      validations:
+        required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: "Expected behavior"
+      validations:
+        required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: "Actual behavior"
+      validations:
+        required: true
+
+  - type: radio
+    id: reproducible
+    attributes:
+      label: "Reproducible"
+      options:
+        - label: "Always"
+          value: always
+        - label: "Sometimes"
+          value: sometimes
+        - label: "Can't reproduce"
+          value: cant_reproduce
+
+  - type: input
+    id: environment
+    attributes:
+      label: "Environment / OS / Version"
+      description: "e.g., Windows 11, Node 18, self-hosted"
+
+  - type: checkboxes
+    id: prechecks
+    attributes:
+      label: "Pre-checks"
+      options:
+        - label: "I searched existing issues and documentation"
+          value: searched
+      validations:
+        required: true
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: "Additional context"
+      description: "Add any logs, screenshots or other context. You can attach images using the GitHub issue attachments area."
