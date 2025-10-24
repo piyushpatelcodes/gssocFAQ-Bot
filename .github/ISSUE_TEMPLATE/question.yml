@@ -1,0 +1,60 @@
+name: ❓ Question or Discussion
+description: Ask a question or start a discussion
+title: "[QUESTION]: "
+labels: ["question"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Have a question about the project? Want to start a discussion? We're here to help!
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Prerequisites
+      description: Please confirm the following before asking your question
+      options:
+        - label: I have searched the existing issues and discussions
+          required: true
+        - label: I have checked the documentation and README
+          required: true
+
+  - type: dropdown
+    id: question-type
+    attributes:
+      label: Question Type
+      description: What type of question is this?
+      options:
+        - How to use a specific feature
+        - Understanding the codebase
+        - Configuration help
+        - Best practices
+        - General discussion
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: question
+    attributes:
+      label: Your Question
+      description: What would you like to know?
+      placeholder: Ask your question here...
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: Provide any relevant context about your question
+      placeholder: What are you trying to achieve? What have you tried so far?
+
+  - type: textarea
+    id: additional-info
+    attributes:
+      label: Additional Information
+      description: Any additional information that might be helpful
+      placeholder: Code snippets, error messages, links, etc.
