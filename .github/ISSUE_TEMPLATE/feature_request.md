@@ -1,19 +1,5 @@
----
-name: Feature Request
-about: Suggest an idea for improvement or a new feature
-title: "[FEATURE]"
-labels: enhancement
-assignees: ''
----
+This repository now uses interactive GitHub Issue Forms for bug reports and feature requests.
 
-**Describe the solution you'd like**
-A clear and concise description of what you want to happen.
+Please use the 'New issue' button in GitHub and select the appropriate form (Bug report, Feature request or Question) to submit structured information. These forms include required fields and will automatically add labels to help triage.
 
-**Problem / Use Case**
-Explain the problem this feature solves or why it would be useful.
-
-**Alternatives considered**
-List any alternative solutions or features you considered.
-
-**Additional context**
-Add any other context or screenshots about the feature request here.
+Legacy templates are kept in `.github/ISSUE_TEMPLATE/legacy/` if you need them.

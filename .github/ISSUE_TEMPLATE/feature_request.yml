@@ -1,0 +1,48 @@
+name: "Feature request"
+description: "Propose an improvement, enhancement or new feature."
+title: "[feature] "
+labels: ["enhancement", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for proposing a feature — please provide clear motivation and examples.
+
+  - type: input
+    id: summary
+    attributes:
+      label: "Short summary"
+      description: "A one-line summary of the requested feature."
+      validations:
+        required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: "Problem / Use Case"
+      description: "Explain the problem this feature solves or why it is useful."
+      validations:
+        required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: "Proposed solution"
+      description: "Describe one or more options for implementation (optional)."
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: "Priority"
+      options:
+        - label: "Low"
+          value: low
+        - label: "Medium"
+          value: medium
+        - label: "High"
+
+  - type: input
+    id: links
+    attributes:
+      label: "Related links / mockups"
+      description: "Optional: paste links to sketches, PRs or docs"
