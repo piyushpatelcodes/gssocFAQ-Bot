@@ -1,4 +1,5 @@
-# 🤖 GSSoC FAQ Bot
+# GSSoC FAQ Bot
+### Not an AI Wrapper
 
 ## 📖 Project Overview
 
@@ -60,13 +61,13 @@ Whether you're a first-time contributor wondering how to get started or an exper
 > This also have Projects by Phase and Tech stack. It even includes Mentor Socials  and Project owner/admin socials (Github, Linkedin, Email) to connect with them faster.
 ## ✨ Features
 
-### 🔍 **FAQ Command (`/faq`)**
+###  **FAQ Command (`/faq`)**
 - Get instant answers to common GSSoC questions
 - Smart search with autocomplete suggestions
 - Covers topics like registration, contribution guidelines, deadlines, and more
 - Fuzzy matching to find answers even with typos
 
-### 📊 **Project Information (`/project`)**
+### **Project Information (`/project`)**
 - Search through all GSSoC projects
 - Get detailed project information including:
   - Project description and tech stack
@@ -75,19 +76,24 @@ Whether you're a first-time contributor wondering how to get started or an exper
   - Step-by-step contribution guide
 - Browse all projects with pagination
 
-### 🌐 **Beautiful Landing Page**
+### **Beautiful Landing Page**
 - Responsive web interface showcasing the bot
 - Dark/Light theme support
 - Interactive playground demonstration
 - Detailed feature explanations
 
-### 🎯 **Smart Features**
+### **Smart Features**
 - Autocomplete for both commands
 - Automatic ID card sharing for relevant queries
 - Paginated project listings
 - Error handling with helpful suggestions
 
-## 🛠️ Tech Stack
+## This Project is POPULARRRRR...YAYYYY
+- Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=piyushpatelcodes/gssocFAQ-Bot&type=date&legend=top-left)](https://www.star-history.com/#piyushpatelcodes/gssocFAQ-Bot&type=date&legend=top-left)
+
+## Tech Stack
 
 ### **Backend**
 - **Node.js** - JavaScript runtime environment
