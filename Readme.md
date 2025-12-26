@@ -1,4 +1,4 @@
-# GSSoC FAQ Bot
+# <img style="width:100px" src="/public/assets/logo/2.png" loading="lazy" alt="GSSoC 25"/> GSSoC FAQ Bot
 ### Not an AI Wrapper
 
 ## 📖 Project Overview
