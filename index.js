@@ -26,7 +26,7 @@ let lastFunQuoteIndex = -1;
 require("dotenv").config();
 
 const faqs = require("./faqs.json");
-const { sendPaginatedProjects } = require("./chunkMessgae");
+const { sendPaginatedProjects } = require("./chunkMessage");
 
 const phase1Projects = JSON.parse(fs.readFileSync("./projects-phase1.json"));
 const phase2Projects = JSON.parse(fs.readFileSync("./projects-phase2.json"));
